@@ -4,6 +4,8 @@ ATENCIÓN: Hay 1 bug oculto en este archivo.
 """
 
 import re
+import calendar
+import calendar
 
 def validar_email(email):
     """Valida si un email tiene formato correcto."""
@@ -91,11 +93,10 @@ def validar_fecha(dia, mes, año):
     if not all(isinstance(x, int) for x in [dia, mes, año]):
         return False
 
-    # BUG: No valida correctamente el mes y día
     if mes < 1 or mes > 12:
         return False
 
-    if dia < 1 or dia > 31:
+    if dia < 1 or dia > calendar.monthrange(año, mes)[1]:
         return False
 
     if año < 1900 or año > 2100:
