@@ -28,17 +28,11 @@ Todas las pruebas siguen la estructura AAA (Arrange-Act-Assert) y están en la c
 
 ## 3. Tabla de bugs
 
-| Función | Entrada que lo revela | Resultado erróneo | Resultado esperado | Corrección |
-|---|---|---|---|---|
-| `minimo` | `[3, 5, 8]` | `0` | `3` | Iniciar con `min_val = lista[0]` en vez de `0` |
-| `raiz_cuadrada` | `-4` | No lanza error | `ValueError` | Validar `numero < 0` antes de calcular |
-| `calcular_precio_final` | `(100, 10, 20)` | `90` | `88` | Calcular el impuesto sobre `precio_con_descuento` y no sobre el precio original |
-| `descuento_apilado` | `(100, [60, 60])` | `ValueError` confuso | `0` | Limitar la suma con `min(sum(descuentos), 100)` |
-| `validar_fecha` | `(31, 2, 2024)` | `True` | `False` | Usar `calendar.monthrange` para conocer los días reales de cada mes |
-
-En `descuento_apilado` hay una decisión de diseño: elegí limitar el descuento a 100% (precio final 0). Otra opción válida habría sido lanzar un error explícito.
-
-El bug de `validar_fecha` está en un módulo no obligatorio (punto extra).
+1. **`minimo`**: con `[3, 5, 8]` devolvía `0` y debía devolver `3`. Lo corregí empezando con `min_val = lista[0]`.
+2. **`raiz_cuadrada`**: con `-4` no lanzaba error y debía lanzar `ValueError`. Agregué la validación `numero < 0`.
+3. **`calcular_precio_final`**: con `(100, 10, 20)` daba `90` y debía dar `88`. El impuesto se calculaba sobre el precio original; ahora se calcula sobre el precio con descuento.
+4. **`descuento_apilado`**: con `(100, [60, 60])` lanzaba un `ValueError` y debía dar `0`. Limité la suma de los descuentos a 100.
+5. **`validar_fecha`**: con `(31, 2, 2024)` daba `True` y debía dar `False`. Ahora usa `calendar.monthrange` para saber cuántos días tiene cada mes. Está en un módulo no obligatorio (punto extra).
 
 ## 4. Cobertura
 
