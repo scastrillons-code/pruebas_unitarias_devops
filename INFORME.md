@@ -3,7 +3,6 @@
 ## 1. Datos
 
 - **Nombre:** Santiago Castrillon Salazar
-- **Grupo:** 
 - **Fecha:** 17 de octubre de 2026
 - **Repositorio:** https://github.com/scastrillons-code/pruebas_unitarias_devops
 - **Módulos trabajados:** `calculadora` y `descuentos` (obligatorios) y `validador` (tercer módulo)
